@@ -1,3 +1,8 @@
+function initMap() {
+var the_map= new GoogleMap();
+the_map.initialize();
+}
+
 function GoogleMap(){
 	this.initialize = function(){
 		var map = showMap();
@@ -5,12 +10,11 @@ function GoogleMap(){
 	 
 	var showMap = function(){
 		var mapOptions = {
-			zoom: 4,
-			center: new google.maps.LatLng(-33, 151),
+			center: {lat: 40.8, lng: -73.9},
+			zoom: 12,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
-		 
-		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 		 
 		return map;
 	}
