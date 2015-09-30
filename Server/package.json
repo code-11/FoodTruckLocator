@@ -1,0 +1,15 @@
+{
+  "name": "npmtest",
+  "version": "0.0.0",
+  "description": "Some NPM test",
+  "main": "scripts/main.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ERRRRROR"
+  },
+  "author": "",
+  "license": "ISC"
+}
