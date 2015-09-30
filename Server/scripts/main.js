@@ -4,7 +4,7 @@ var http = require('http');
 var fs = require('fs');
 
 var ObjectId = require('mongodb').ObjectID;
-var url = 'mongodb://localhost:27017/test';
+var url = process.env.DATABASE_URL;
 
 var DB=null;
 
