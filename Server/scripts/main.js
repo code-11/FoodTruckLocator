@@ -4,7 +4,7 @@ var http = require('http');
 var fs = require('fs');
 
 var ObjectId = require('mongodb').ObjectID;
-var url = process.env.DATABASE_URL;
+var url = "mongodb://heroku_sw5rqm7g:71l4uib19e2bskgjnslc4eecpn@ds051933.mongolab.com:51933/heroku_sw5rqm7g"
 
 var DB=null;
 
