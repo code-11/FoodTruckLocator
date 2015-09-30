@@ -1,15 +1,14 @@
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var http = require('http');
-fs = require('fs');
+var fs = require('fs');
 
 var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/test';
 
 var DB=null;
 
-var updateLocation=function(db,lat,lon){
-	var rnd=Math.round(Math.random()*10);
+var updateLocation=function(db,lat,lon,callback){
 	db.collection('locations').update( 
 		{"name":"xxx"},	
 		{
@@ -21,20 +20,25 @@ var updateLocation=function(db,lat,lon){
 	 function(err, result) {
 	    assert.equal(err, null);
 	    console.log("Updated xxx in the locations collection.");
-	    findDocuments(db);
+	    if (callback!=null){
+	    	callback(db);
+		}
+	    //findDocuments(db);
 	    // db.close();
   	});
 }
 
 
-var findDocuments = function(db) {
+var findDocuments = function(db,callback) {
 	var cursor =db.collection('locations').find(
 		{"name":"xxx"}
 	);
 	cursor.each(function(err, doc) {
 		assert.equal(err, null);
 		if (doc != null) {
-		 console.dir(doc);
+			if (callback!=null){
+				callback(db,doc);
+			}
 		}
 	});
 };
@@ -48,7 +52,11 @@ function innerWorkings(db,req){
         req.on('end', function () {
         	var regex=/lon=([\-0-9\.]*)&lat=([\-0-9\.]*)/
             var res = body.match(regex);
-            updateLocation(db,res[1],res[2])
+            updateLocation(db,res[1],res[2], function(db){
+            	findDocuments(db, function(db,doc){
+            		console.log(doc);
+            	});
+            });
         });
     }
 }
@@ -66,6 +74,11 @@ function handleRequest(req, res){
  //        res.end(html);
 	// }
 }
+
+module.exports={
+	updateLocation: updateLocation,
+	findDocuments: findDocuments
+};
 
 MongoClient.connect(url, function(err, db) {
 	DB=db;
