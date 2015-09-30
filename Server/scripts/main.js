@@ -68,11 +68,9 @@ function handleRequest(req, res){
 		res.setHeader("Access-Control-Allow-Origin", "*");
 	    res.end('It Works!! Path Hit: ' + req.url);
 	}
-	// if (req.method == 'GET') {
-	// 	var html = fs.readFileSync('../../Foodinator/www/index.html');
- //        res.writeHead(200, {'Content-Type': 'text/plain'});
- //        res.end(html);
-	// }
+	if (req.method == 'GET') {
+	    res.end('It Works!! Path Hit: ' + req.url);
+	}
 }
 
 module.exports={
