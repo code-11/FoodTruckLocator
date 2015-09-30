@@ -1,11 +1,28 @@
+function sendLocation(lat,lon){
+	var url = "http://localhost:8080";
+	var params = "lon="+lat+"&lat="+lon;
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send(params);
+}
+
 function onSuccess(position,marker) {
 	var loc=position;
-	var to_screen=loc.coords.latitude+","+loc.coords.longitude;
+	var latit=loc.coords.latitude;
+	var longit=loc.coords.longitude;
+
+	var to_screen=latit+","+longit;
 	var loc_p=document.getElementById("loc");
 	var maps_version=google.maps.version;
 	loc_p.innerHTML=to_screen;
+
+	sendLocation(latit,longit);
+
 	marker.setPosition(
-		{lat:loc.coords.latitude, lng:loc.coords.longitude}
+		{lat:latit, lng:longit}
 	);
 }
 // setPosition
