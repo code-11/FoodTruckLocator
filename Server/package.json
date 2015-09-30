@@ -10,6 +10,9 @@
     "type": "git",
     "url": "ERRRRROR"
   },
+  "dependencies": {
+    "mongo": "2.6.3"
+  },
   "author": "",
   "license": "ISC"
 }
