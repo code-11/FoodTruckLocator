@@ -11,17 +11,20 @@
         <!-- Adding Reference to  Google Maps API -->
         <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
         <!-- Look in googlemaps.js -->
-        <script type="text/javascript" src="googlemap.js"></script>
+        <script async defer type="text/javascript" src="googlemap.js"></script>
+
         <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnOsVQzm27ZRMqj4VeXFkY9xQXkiMCj2k&callback=initMap">
         </script>
+        <!--<script type="text/javascript" src="js/geolocationmarker/src/geolocationmarker-compiled.js"> </script>-->
   </head>
   <body>
     <div id="map"></div>
        <div class="app">
             <h1>Foodinator</h1>
+            <p id="loc">Location not found</p>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();

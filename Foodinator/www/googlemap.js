@@ -37,7 +37,7 @@ function GoogleMap(){
 	 
 	var showMap = function(){
 		var mapOptions = {
-			center: {lat: 40.8, lng: -73.9},
+			center: {lat: 40.77, lng: -73.96},
 			zoom: 12,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
