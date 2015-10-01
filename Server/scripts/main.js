@@ -63,13 +63,17 @@ function innerWorkings(db,req){
 
 function handleRequest(req, res){
 	if (req.method == 'POST') {
+		console.log("Got a POST");
 		db=DB;
 		innerWorkings(db,req);
 		res.setHeader("Access-Control-Allow-Origin", "*");
 	    res.end('It Works!! Path Hit: ' + req.url);
 	}
-	if (req.method == 'GET') {
+	else if (req.method == 'GET') {
 	    res.end('It Works!! Path Hit: ' + req.url);
+	}
+	else{
+		console.log("Got a something else!");
 	}
 }
 
