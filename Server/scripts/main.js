@@ -60,8 +60,7 @@ function innerWorkings(db,req,res){
         		console.log("After UpdateLocation");
         	findDocuments(db, function(db,doc){
         		console.log(doc);
-        		res.setHeader("Access-Control-Allow-Origin", "*");
-	    		res.end('It Works!! Path Hit: ' + req.url);
+	    		res.end("Post Response");
         	});
         });
     });
@@ -71,6 +70,7 @@ function handleRequest(req, res){
 	if (req.method == 'POST') {
 		console.log("Got a POST");
 		db=DB;
+		res.setHeader("Access-Control-Allow-Origin", "*");
 		innerWorkings(db,req,res);
 	}
 	else if (req.method == 'GET') {
