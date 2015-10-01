@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "Some NPM test",
   "main": "scripts/main.js",
-  "start": "scripts/main.js",
+  "scripts":{
+    "start": "node scripts/main.js",
+  },
   "dependencies": {
     "mongodb": "2.0.x"
   },
