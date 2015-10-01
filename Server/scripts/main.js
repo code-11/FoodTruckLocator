@@ -36,6 +36,8 @@ var findDocuments = function(db,callback) {
 	cursor.each(function(err, doc) {
 		assert.equal(err, null);
 		if (doc != null) {
+			console.log("Found Document");
+
 			if (callback!=null){
 				callback(db,doc);
 			}
@@ -44,21 +46,21 @@ var findDocuments = function(db,callback) {
 };
 
 function innerWorkings(db,req){
-	if (req.method == 'POST') {
-        var body = '';
-        req.on('data', function (data) {
-            body += data;
+	console.log("In inner Workings");
+    var body = '';
+    req.on('data', function (data) {
+        body += data;
+    });
+    req.on('end', function () {
+    	var regex=/lon=([\-0-9\.]*)&lat=([\-0-9\.]*)/
+        var res = body.match(regex);
+        updateLocation(db,res[1],res[2], function(db){
+        		console.log("After UpdateLocation");
+        	findDocuments(db, function(db,doc){
+        		console.log(doc);
+        	});
         });
-        req.on('end', function () {
-        	var regex=/lon=([\-0-9\.]*)&lat=([\-0-9\.]*)/
-            var res = body.match(regex);
-            updateLocation(db,res[1],res[2], function(db){
-            	findDocuments(db, function(db,doc){
-            		console.log(doc);
-            	});
-            });
-        });
-    }
+    });
 }
 
 function handleRequest(req, res){
