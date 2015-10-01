@@ -45,7 +45,7 @@ var findDocuments = function(db,callback) {
 	});
 };
 
-function innerWorkings(db,req){
+function innerWorkings(db,req,res){
 	console.log("In inner Workings");
     var body = '';
     req.on('data', function (data) {
@@ -60,6 +60,8 @@ function innerWorkings(db,req){
         		console.log("After UpdateLocation");
         	findDocuments(db, function(db,doc){
         		console.log(doc);
+        		res.setHeader("Access-Control-Allow-Origin", "*");
+	    		res.end('It Works!! Path Hit: ' + req.url);
         	});
         });
     });
@@ -70,8 +72,6 @@ function handleRequest(req, res){
 		console.log("Got a POST");
 		db=DB;
 		innerWorkings(db,req);
-		res.setHeader("Access-Control-Allow-Origin", "*");
-	    res.end('It Works!! Path Hit: ' + req.url);
 	}
 	else if (req.method == 'GET') {
 	    res.end('It Works!! Path Hit: ' + req.url);
