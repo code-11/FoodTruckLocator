@@ -1,5 +1,5 @@
 function sendLocation(lat,lon){
-	var url = "http://localhost:8080";
+	var url = "https://foodinator.herokuapp.com/";
 	var params = "lon="+lat+"&lat="+lon;
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
