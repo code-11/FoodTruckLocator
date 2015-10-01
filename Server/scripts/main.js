@@ -52,6 +52,8 @@ function innerWorkings(db,req){
         body += data;
     });
     req.on('end', function () {
+    	console.log("Body: "+body);
+
     	var regex=/lon=([\-0-9\.]*)&lat=([\-0-9\.]*)/
         var res = body.match(regex);
         updateLocation(db,res[1],res[2], function(db){
