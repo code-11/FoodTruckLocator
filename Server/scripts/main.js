@@ -71,7 +71,7 @@ function handleRequest(req, res){
 	if (req.method == 'POST') {
 		console.log("Got a POST");
 		db=DB;
-		innerWorkings(db,req);
+		innerWorkings(db,req,res);
 	}
 	else if (req.method == 'GET') {
 	    res.end('It Works!! Path Hit: ' + req.url);
