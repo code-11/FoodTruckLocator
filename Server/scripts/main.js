@@ -55,8 +55,8 @@ function innerWorkings(db,req,res){
     	console.log("Body: "+body);
 
     	var regex=/lon=([\-0-9\.]*)&lat=([\-0-9\.]*)/
-        var res = body.match(regex);
-        updateLocation(db,res[1],res[2], function(db){
+        var parsed = body.match(regex);
+        updateLocation(db,parsed[1],parsed[2], function(db){
         		console.log("After UpdateLocation");
         	findDocuments(db, function(db,doc){
         		console.log(doc);
