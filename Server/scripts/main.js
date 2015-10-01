@@ -83,16 +83,16 @@ MongoClient.connect(url,{}, function(err, db) {
 	assert.equal(null, err);
 	console.log("Connected correctly to server.");
 
-	// const PORT=8080; 
+	const PORT=process.env.PORT || 8080; 
 
-	// 	//Create a server
-	// var server = http.createServer(handleRequest);
+		//Create a server
+	var server = http.createServer(handleRequest);
 
-	// //Lets start our server
-	// server.listen(PORT, function(){
-	//     //Callback triggered when server is successfully listening. Hurray!
-	//     console.log("Server listening on: http://localhost:%s", PORT);
+	//Lets start our server
+	server.listen(PORT, function(){
+	    //Callback triggered when server is successfully listening. Hurray!
+	    console.log("Server listening on: http://localhost:%s", PORT);
 
-	// });
+	});
 
 });
