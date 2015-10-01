@@ -4,7 +4,7 @@
   "description": "Some NPM test",
   "main": "scripts/main.js",
   "scripts":{
-    "start": "node scripts/main.js",
+    "start": "node scripts/main.js"
   },
   "dependencies": {
     "mongodb": "2.0.x"
