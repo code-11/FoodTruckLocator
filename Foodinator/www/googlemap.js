@@ -22,11 +22,6 @@ function sendLocation(lat,lon,callback){
 }
 
 function markLocations(latit,longit,res,map){
-	var marker = new google.maps.Marker({
-		position: {lat:40.77, lng:-73.96},
-		map: map,
-		icon: getPin("009933")
-	});
 	MARKERS.push(marker);
 	var res=JSON.parse(res);
 	document.getElementById("num").innerHTML=res.length;
