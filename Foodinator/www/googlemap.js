@@ -22,7 +22,6 @@ function sendLocation(lat,lon,callback){
 }
 
 function markLocations(latit,longit,res,map){
-	MARKERS.push(marker);
 	var res=JSON.parse(res);
 	document.getElementById("num").innerHTML=res.length;
 	for(var i=0;i<res.length;i+=1){
@@ -30,11 +29,12 @@ function markLocations(latit,longit,res,map){
 		el_lat=parseFloat(el.lat);
 		el_lon=parseFloat(el.lon);
 
-		MARKERS.push(new google.maps.Marker({
+		var marker=new google.maps.Marker({
 			position: {lat:el_lat, lng:el_lon},
 			map: map,
 			icon: getPin("009933")
-		}));
+		});
+		MARKERS.push(marker);
 		// google.maps.event.trigger(map, 'resize');
 		//MARKERS.push(marker);
 		// console.log("Dropping at: "+el_lat+","+el_lon);
