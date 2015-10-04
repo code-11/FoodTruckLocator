@@ -8,26 +8,42 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Foodinator</title>
-        <!-- Adding Reference to  Google Maps API -->
-        <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
-        <!-- Look in googlemaps.js -->
-        <script async defer type="text/javascript" src="googlemap.js"></script>
 
+
+        <!-- LOGIN -->
+        <meta name="google-signin-scope" content="profile email">
+		    <meta name="google-signin-client_id" content="994388041614-nr93o5el3st1nfgq0k8mrmj5odemn6l8.apps.googleusercontent.com">
+		    <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script async defer type="text/javascript" src="js/login.js"></script>
+
+
+				<!-- MAP VIEW -->
+        <script async defer type="text/javascript" src="googlemap.js"></script>
         <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnOsVQzm27ZRMqj4VeXFkY9xQXkiMCj2k&callback=initMap">
         </script>
+        <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+
         <!--<script type="text/javascript" src="js/geolocationmarker/src/geolocationmarker-compiled.js"> </script>-->
   </head>
   <body>
-    <div id="map"></div>
-       <div class="app">
-            <h1>Foodinator</h1>
-            <p id="loc">Location not found</p>
-        </div>
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>   
+  	<p id="CLIENTID"></p>
+  	<div id="login-slide">
+  		<div class="g-signin2" data-onsuccess="onGoogleSignIn" data-theme="dark"></div>
+  	</div>
+    <div id="map-slide">
+           <div id="top-banner">
+              <h1>Foodinator</h1>
+              <p id="loc">Location not found</p>
+              <p id="num">-1</p>
+          </div>
+          <div id="map"></div>
+
+          <!--<script type="text/javascript" src="cordova.js"></script>-->
+          <script type="text/javascript" src="js/index.js"></script>
+          <script type="text/javascript">
+              app.initialize();
+          </script> 
+    </div>  
   </body>
 </html>
